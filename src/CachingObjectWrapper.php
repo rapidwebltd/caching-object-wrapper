@@ -27,7 +27,7 @@ class CachingObjectWrapper
             return $cacheItem->get();
         }
 
-        $response = call_user_func_array($this->wrappedObject->$name, $arguments);
+        $response = call_user_func_array([$this->wrappedObject, $name], $arguments);
 
         $cacheItem->set($response);
         $cacheItem->expiresAfter($this->expiryInSeconds);
