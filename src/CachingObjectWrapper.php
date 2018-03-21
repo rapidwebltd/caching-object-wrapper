@@ -10,7 +10,7 @@ class CachingObjectWrapper
     private $cache;
     private $expiryInSeconds;
 
-    public function __construct($objectToWrap, CacheItemPoolInterface $cacheItemPool, int $expiryInSeconds)
+    public function __construct($objectToWrap, CacheItemPoolInterface $cacheItemPool, $expiryInSeconds)
     {
         $this->wrappedObject = $objectToWrap;
         $this->cache = $cacheItemPool;
