@@ -1,0 +1,25 @@
+{
+    "name": "rapidwebltd/caching-object-wrapper",
+    "description": "Caching Object Wrapper",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jordan Hall",
+            "email": "jordan.hall@rapidweb.biz"
+        }
+    ],
+    "license": "LGPL-3.0-only",
+    "require": {
+        "psr/cache": "^1.0"
+    },
+    "require-dev": {
+        "cache/integration-tests": "^0.16.0",
+        "phpunit/phpunit": "^5.7",
+        "satooshi/php-coveralls": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RapidWeb\\CachingObjectWrapper\\": "src/"
+        }
+    }
+}
