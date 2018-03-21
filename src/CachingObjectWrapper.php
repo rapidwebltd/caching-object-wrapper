@@ -21,7 +21,7 @@ class CachingObjectWrapper
     {
         $cacheKey = sha1(get_class($this->wrappedObject).$name.serialize($arguments));
 
-        $cacheItem = $this->cache->get($cacheKey);
+        $cacheItem = $this->cache->getItem($cacheKey);
 
         if ($cacheItem->isHit()) {
             return $cacheItem->get();
