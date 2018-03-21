@@ -13,5 +13,5 @@ composer require rapidwebltd/caching-object-wrapper
 ## Usage
 
 ```php
-$object = new CachingObjectWrapper($objectToCacheMethodResponseOf, $psr6CacheItemPool, $expiryTimeInSeconds); 
+$object = new CachingObjectWrapper($objectToCacheMethodResponsesOf, $psr6CacheItemPool, $expiryTimeInSeconds); 
 ```
