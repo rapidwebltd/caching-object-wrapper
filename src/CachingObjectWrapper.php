@@ -17,7 +17,7 @@ class CachingObjectWrapper
         $this->expiryInSeconds = $expiryInSeconds;
     }
 
-    public function __call(string $name, array $arguments)
+    public function __call($name, $arguments)
     {
         $cacheKey = sha1(get_class($this->wrappedObject).$name.serialize($arguments));
 
