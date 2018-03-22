@@ -36,5 +36,4 @@ class CachingObjectWrapper
 
         return $response;
     }
-
 }
