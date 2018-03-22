@@ -1,4 +1,4 @@
-# Caching Object Wrapper
+# 🎁 Caching Object Wrapper
 
 [![Build Status](https://travis-ci.org/rapidwebltd/caching-object-wrapper.svg?branch=master)](https://travis-ci.org/rapidwebltd/caching-object-wrapper)
 [![Coverage Status](https://coveralls.io/repos/github/rapidwebltd/caching-object-wrapper/badge.svg?branch=master)](https://coveralls.io/github/rapidwebltd/caching-object-wrapper?branch=master)
