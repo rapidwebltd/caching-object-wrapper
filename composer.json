@@ -1,6 +1,6 @@
 {
     "name": "rapidwebltd/caching-object-wrapper",
-    "description": "Caching Object Wrapper",
+    "description": "Wraps up any PHP object so all its methods are cached.",
     "type": "library",
     "authors": [
         {
