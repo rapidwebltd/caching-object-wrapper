@@ -16,6 +16,44 @@ composer require rapidwebltd/caching-object-wrapper
 
 ## Usage
 
+Here is a very simple usage example, showing how we can easily cache a simple object.
+
 ```php
-$object = new CachingObjectWrapper($objectToCacheMethodResponsesOf, $psr6CacheItemPool, $expiryTimeInSeconds); 
+use RapidWeb\CachingObjectWrapper\CachingObjectWrapper;
+use rapidweb\RWFileCachePSR6\CacheItemPool;
+
+// This is an example class that we are going to use. It just generates random numbers.
+class RandomNumberGenerator
+{
+    public function generate()
+    {
+        return rand();
+    }
+}
+
+// First, we need to install and setup a PSR6 cache item pool. 
+// As an example, we'll use the PSR-6 adapter for RW File Cache.
+
+// $ composer require rapidwebltd/rw-file-cache-psr-6
+
+$cache = new CacheItemPool();
+$cache->changeConfig(
+    [
+        'cacheDirectory'  => '/tmp/cow-tests/',
+        'gzipCompression' => true,
+        ]
+    );
+
+// Next, we can wrap up a new RandomNumberGenerator.
+// We also pass in the $cache object we just created, and the desired cache expiry time in seconds.
+
+$randomNumberGenerator = new CachingObjectWrapper(new RandomNumberGenerator(), $cache, 60 * 60);
+
+// That's it!
+// To test, we can tell the wrapped object to generate us two random numbers.
+
+$randomNumber1 = $randomNumberGenerator->generate();
+$randomNumber2 = $randomNumberGenerator->generate();
+
+// Due to our caching, $randomNumber1 and $randomNumber2 should be identical.
 ```
