@@ -17,14 +17,13 @@ final class CachingTest extends TestCase
                 'gzipCompression' => true,
                 ]
             );
-        
-        $randomNumberGenerator = new CachingObjectWrapper(new RandomNumberGenerator(), $cache, 60*60);
+
+        $randomNumberGenerator = new CachingObjectWrapper(new RandomNumberGenerator(), $cache, 60 * 60);
 
         $expected = $randomNumberGenerator->generate();
 
-        for ($i=0; $i < 100; $i++) { 
+        for ($i = 0; $i < 100; $i++) {
             $this->assertEquals($expected, $randomNumberGenerator->generate());
         }
-
     }
 }
