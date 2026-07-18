@@ -53,10 +53,15 @@ final class CachingTest extends TestCase
 
     private function newCache()
     {
+        $cacheDirectory = sys_get_temp_dir().'/cow-tests-'.getmypid().'/';
+        if (!is_dir($cacheDirectory)) {
+            mkdir($cacheDirectory, 0777, true);
+        }
+
         $cache = new CacheItemPool();
         $cache->changeConfig(
             [
-                'cacheDirectory'  => sys_get_temp_dir().'/cow-tests-'.getmypid().'/',
+                'cacheDirectory'  => $cacheDirectory,
                 'gzipCompression' => true,
             ]
         );
