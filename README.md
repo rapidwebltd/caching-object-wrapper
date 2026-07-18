@@ -1,7 +1,6 @@
 # 🎁 Caching Object Wrapper
 
-[![Build Status](https://travis-ci.org/rapidwebltd/caching-object-wrapper.svg?branch=master)](https://travis-ci.org/rapidwebltd/caching-object-wrapper)
-[![Coverage Status](https://coveralls.io/repos/github/rapidwebltd/caching-object-wrapper/badge.svg?branch=master)](https://coveralls.io/github/rapidwebltd/caching-object-wrapper?branch=master)
+[![Tests](https://github.com/rapidwebltd/caching-object-wrapper/actions/workflows/tests.yml/badge.svg)](https://github.com/rapidwebltd/caching-object-wrapper/actions/workflows/tests.yml)
 
 Wraps up any PHP object so all its methods are cached.
 
@@ -56,3 +55,22 @@ $randomNumber2 = $randomNumberGenerator->generate();
 
 // Due to our caching, $randomNumber1 and $randomNumber2 should be identical.
 ```
+
+## Invalidating and refreshing calls
+
+You can remove a single cached call without clearing the entire cache pool. Pass the method name and the same argument list used for the call.
+
+```php
+$randomNumberGenerator->forgetCachedCall('generate');
+$freshNumber = $randomNumberGenerator->refreshCachedCall('generate');
+```
+
+`cacheKeyFor($method, $arguments)` returns the underlying PSR-6 key when you need to inspect or manage it directly.
+
+By default, wrappers around the same class share cached calls. Give the constructor an optional fourth argument to isolate instances that have different internal state.
+
+```php
+$wrapped = new CachingObjectWrapper($service, $cache, 3600, 'customer-123');
+```
+
+The package supports PSR Cache 1, 2, and 3 while retaining its PHP 5.6 minimum.
