@@ -43,6 +43,8 @@ jobs:
           php-version: '8.5'
           tools: composer:latest
           coverage: none
+      - run: composer remove --dev phpunit/phpunit rapidwebltd/rw-file-cache-psr-6 --no-update --no-interaction
+      - run: composer require psr/cache:^3.0 --no-update --no-interaction
       - run: composer update --no-dev --prefer-stable --no-interaction
       - run: composer show psr/cache | grep '^versions.*3\\.'
       - run: php -l src/CachingObjectWrapper.php
