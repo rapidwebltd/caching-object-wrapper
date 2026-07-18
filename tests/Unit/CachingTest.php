@@ -60,7 +60,7 @@ final class CachingTest extends TestCase
                 'gzipCompression' => true,
             ]
         );
-        $cache->flush();
+        $cache->clear();
 
         return $cache;
     }

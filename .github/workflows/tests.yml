@@ -46,5 +46,5 @@ jobs:
       - run: composer remove --dev phpunit/phpunit rapidwebltd/rw-file-cache-psr-6 --no-update --no-interaction
       - run: composer require psr/cache:^3.0 --no-update --no-interaction
       - run: composer update --no-dev --prefer-stable --no-interaction
-      - run: composer show psr/cache | grep '^versions.*3\\.'
+      - run: composer show psr/cache --format=json | grep '3.0.0'
       - run: php -l src/CachingObjectWrapper.php
